@@ -1,0 +1,21 @@
+body,links,sender_domain,reply_to_domain,raw_html,label
+"Hi team attached is the monthly project report for your review.",https://company.com/report,company.com,company.com,<p>Hi team</p>,0
+"Please verify your bank account details immediately or it will be suspended!",http://192.168.1.1/login,bank-security.com,hacker-host.net,"<p>Verify</p><span style='display:none'>hidden text</span>",1
+"Your invoice #8892 is ready for download.",https://billing.service.com/inv,service.com,service.com,<p>Your invoice</p>,0
+"URGENT: Password reset required for your account!",http://10.0.0.1/reset,paypal.com,fake-server.org,"<div>Reset</div><span style='font-size:0px'>harmless text</span>",1
+"Meeting reminder for tomorrow at 10 AM in Conference Room B.",https://calendar.company.com,company.com,company.com,<p>Meeting notice</p>,0
+"ACTION REQUIRED: Update your billing address immediately to avoid account closure.",http://172.16.0.1/verify,billing-alert.com,attack-node.com,"<p>Alert</p><div style='color:#fff'>white font</div>",1
+"Thanks for ordering from our store. Your package has shipped.",https://store.com/tracking,store.com,store.com,<p>Order status</p>,0
+"Your security code is 849201. Do not share this with anyone.",https://auth.company.com,company.com,company.com,<p>Security code</p>,0
+"SUSPENDED ACCOUNT: Immediate action required to restore access.",http://192.168.1.50/login,secure-bank.org,spoofed-domain.net,"<p>Notice</p><span style='visibility:hidden'>stealth</span>",1
+"Here is the updated weekly project roadmap for your feedback.",https://docs.company.com/roadmap,company.com,company.com,<p>Roadmap update</p>,0
+"CRITICAL ALERT: Unusual login detected from an unrecognized device.",http://10.0.0.45/auth,secure-login-check.com,attacker-redirect.com,"<p>Security Alert</p><div style='display:none'>bypass text</div>",1
+"Can we reschedule our sync call to Thursday afternoon?",https://meet.company.com/room1,company.com,company.com,<p>Hey let us move the meeting.</p>,0
+"Your subscription will renew automatically next week. Review your receipt.",https://billing.service-provider.com/receipt,service-provider.com,service-provider.com,<p>Receipt details enclosed.</p>,0
+"IMMEDIATE ACTION NEEDED: Your account password will expire in 2 hours.",http://192.168.0.12/update,pass-update.net,hacker-domain.org,"<p>Update Password</p><span style='font-size:0px'>keyword stuffing</span>",1
+"Welcome to the team! Here are the onboarding docs for your first week.",https://hr.company.com/onboarding,company.com,company.com,<p>Welcome aboard!</p>,0
+"FINAL NOTICE: Tax refund pending verification. Claim now!",http://10.1.1.99/refund,gov-tax-portal.com,spoof-mail.com,"<p>Tax Refund</p><span style='color:white'>invisible text</span>",1
+"Your flight reservation is confirmed. View itinerary inside.",https://airlines.com/itinerary,airlines.com,airlines.com,<p>Flight confirmation details.</p>,0
+"ATTENTION: Unauthorized transaction detected on your debit card.",http://192.168.2.10/dispute,card-protection.org,phishing-server.ru,"<p>Dispute Transaction</p><div style='visibility:hidden'>zero width text</div>",1
+"Quarterly financial statistics have been published on the intranet.",https://intranet.company.com/finance,company.com,company.com,<p>Financial metrics summary.</p>,0
+"SECURITY NOTICE: Re-authenticate your email credentials immediately.",http://172.16.10.5/login,mail-auth-system.com,malicious-host.cn,"<p>Re-authenticate</p><span style='display:none'>hidden html content</span>",1
