@@ -38,11 +38,23 @@ PRESETS = {
         "html": "<div>URGENT!</div><span style='display:none;'>hidden text</span>",
     },
     "✅ Standard Corporate Email (Legitimate)": {
-        "body": "Hi team, attached is the monthly project report for your review. Let me know if you have questions.",
-        "links": "https://company.com/report",
+        "body": (
+            "Hi team,\n\n"
+            "Attached is the monthly project report for your review. This month we closed 14 tickets, "
+            "shipped the new onboarding flow, and finished the migration off the legacy queue. "
+            "Highlights are in the summary section; the appendix has the full breakdown by workstream "
+            "along with the metrics dashboard link.\n\n"
+            "Please read through before Thursday's sync so we can spend the meeting on the open questions "
+            "rather than the recap. In particular I'd like feedback on the proposed staffing plan for Q4 "
+            "and whether we should push the analytics rewrite into next quarter.\n\n"
+            "Let me know if you have any questions or want to discuss anything ahead of the meeting. "
+            "Happy to jump on a quick call.\n\n"
+            "Thanks,\nAlex"
+        ),
+        "links": "https://company.com/report https://company.com/dashboard",
         "sender": "company.com",
         "reply": "company.com",
-        "html": "<p>Hi team, attached is the report.</p>",
+        "html": "<p>Hi team,</p><p>Attached is the monthly report with the summary and appendix.</p><p>Thanks,<br/>Alex</p>",
     },
     "🥷 Hidden Text Evasion Attack (Phishing)": {
         "body": "FINAL NOTICE: Tax refund pending verification. Claim now!",
@@ -72,21 +84,23 @@ with st.sidebar.form("email_form"):
     submit_btn = st.form_submit_button("Analyze Email")
 
 
-def _validate(body, sender, reply):
-    warnings = []
-    if not body.strip():
-        warnings.append("Email body is empty — the score won't be meaningful.")
-    if "@" in sender:
-        warnings.append("Sender Domain should be just the domain (e.g. `gmail.com`), not a full email address.")
-    if "@" in reply:
-        warnings.append("Reply-To Domain should be just the domain, not a full email address.")
-    return warnings
+def _missing_fields(body, links, sender, reply, html):
+    missing = []
+    if not body.strip():           missing.append("email body")
+    if not links.strip():          missing.append("links")
+    if not sender.strip():         missing.append("sender")
+    if not reply.strip():          missing.append("reply-to")
+    if not html.strip():           missing.append("raw HTML")
+    return missing
 
 
 if submit_btn:
-    warnings = _validate(body, sender_domain, reply_to_domain)
-    for w in warnings:
-        st.warning(w)
+    missing = _missing_fields(body, links, sender_domain, reply_to_domain, raw_html)
+    if missing:
+        st.warning(
+            f"Only partial input provided (missing: {', '.join(missing)}). "
+            "The model will still score this email, but filling in more fields makes the result more credible."
+        )
 
     email_data = {
         "body": body,
@@ -114,9 +128,6 @@ if submit_btn:
     with col2:
         st.metric("Calculated Risk Probability", f"{probability * 100:.1f}%")
         st.progress(min(max(probability, 0.0), 1.0))
-
-    if not body.strip() and not links.strip() and not raw_html.strip():
-        st.info("All content fields are empty — this score reflects the model's default guess, not real evidence.")
 
     st.markdown("---")
 

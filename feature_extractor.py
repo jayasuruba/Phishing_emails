@@ -54,6 +54,12 @@ def extract_signals(email):
     reply_to = str(email.get("reply_to_domain", "") or "").lower().strip()
     raw_html = str(email.get("raw_html", "") or "")
 
+    # Accept either a bare domain ("gmail.com") or a full address ("me@gmail.com")
+    if "@" in sender:
+        sender = sender.rsplit("@", 1)[-1]
+    if "@" in reply_to:
+        reply_to = reply_to.rsplit("@", 1)[-1]
+
     # 1. CONTENT SIGNALS
     body_lower = body.lower()
     features["urgency_count"] = min(sum(body_lower.count(w) for w in URGENCY_WORDS), 20)
@@ -86,7 +92,7 @@ def extract_signals(email):
         bool(sender) and bool(reply_to) and sender != reply_to
     )
     features["sender_link_mismatch"] = int(
-        bool(sender) and links and not any(
+        bool(sender) and bool(links) and not any(
             _domain_of(l).endswith(sender) for l in links
         )
     )
