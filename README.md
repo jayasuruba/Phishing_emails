@@ -38,5 +38,37 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/jayasuruba/Phishing_emails.git
+   git clone [https://github.com/jayasuruba/Phishing_emails.git](https://github.com/jayasuruba/Phishing_emails.git)
    cd Phishing_emails
+   ```
+
+2. **Create a Virtual Environment:**
+   ```bash
+   python -m venv venv
+   ```
+
+3. **Activate the Virtual Environment:**
+
+   * **For Windows:**
+     ```cmd
+     venv\Scripts\activate
+     ```
+
+   * **For macOS / Linux:**
+     ```bash
+     source venv/bin/activate
+     ```
+
+4. **Install Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Run the Application:**
+   ```bash
+   streamlit run app.py
+   ```
+
+6. **Open the Application:**
+   Open the local URL displayed in the terminal:
+   `http://localhost:8501`
